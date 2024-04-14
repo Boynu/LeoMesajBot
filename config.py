@@ -5,4 +5,4 @@ MONGODB_URI = "mongodb+srv://fridabisov26:feridabusov2@cluster0.rrmqdo9.mongodb.
 WHISPER_ICON_URL = "https://graph.org/file/16afae7eb8b4e1641aeac.png"
 SUDO_USERS = [6997801235]
 BOT_USERNAME = "@leomesajbot" #your bot user name as @username
-CHAT_ID = "-1002143361911" #channel id to log new users
+CHAT_ID = -1002056467668 #channel id to log new users
