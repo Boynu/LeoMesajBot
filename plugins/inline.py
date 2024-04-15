@@ -30,33 +30,33 @@ async def answer_iq(_, iq: InlineQuery):
         or len(query) > ANSWER_CALLBACK_QUERY_MAX_LENGTH
         or (query.startswith("@") and len(split) == 1)
     ):
-        title = f"{emoji.FIRE} Write a whisper message"
+        title = f"{emoji.FIRE} Gizli mesajı yazın"
         content = (
-            "**Send whisper messages through inline mode**\n\n"
-            f"Usage: `{BOT_USERNAME} [@username|@] text`"
+            "**Daxili rejim vasitəsilə gizli mesajları göndərin**\n\n"
+            f"İstifadəsi: `{BOT_USERNAME} [@username|@] mesaj`"
         )
-        description = f"Usage: {BOT_USERNAME} [@username|@] text"
+        description = f"İstifadəsi: {BOT_USERNAME} [@username|@] mesaj"
         username = BOT_USERNAME.replace("@", "")
         button = InlineKeyboardButton(
-            "Learn more...", url=f"https://t.me/{username}?start=learn"
+            "Daha ətraflı", url=f"https://t.me/{username}?start=learn"
         )
     elif not query.startswith("@"):
-        title = f"{emoji.EYE} Whisper once to the first one who open it"
-        content = f"{emoji.EYE} The first one who open the whisper can read it"
+        title = f"{emoji.EYE} Onu ilk açana bir dəfə gizli mesaj yazın."
+        content = f"{emoji.EYE} Gizli Mesajı ilk açan oxuya bilər"
         description = f"{emoji.SHUSHING_FACE} {query}"
         button = InlineKeyboardButton(
-            f"{emoji.EYE} show message", callback_data="show_whisper"
+            f"{emoji.EYE} Mesaja Bax", callback_data="show_whisper"
         )
     else:
         # Python 3.8+
         u_target = "anyone" if (x := split[0]) == "@" else x
-        title = f"{emoji.LOCKED} A whisper message to {u_target}"
-        content = f"{emoji.LOCKED} A whisper message to {u_target}"
+        title = f"{emoji.LOCKED} Gizli Mesajı {u_target}"
+        content = f"{emoji.LOCKED} Gizli Mesajı {u_target}"
         description = f"{emoji.SHUSHING_FACE} {split[1]}"
         button = InlineKeyboardButton(
-            f"{emoji.LOCKED_WITH_KEY} show message", callback_data="show_whisper"
+            f"{emoji.LOCKED_WITH_KEY} Mesaja Bax", callback_data="show_whisper"
         )
-    switch_pm_text = f"{emoji.INFORMATION} Learn how to send whispers"
+    switch_pm_text = f"{emoji.INFORMATION} Gizli Mesajlarınızı necə göndərəcəyinizi öyrənin"
     switch_pm_parameter = "learn"
     await iq.answer(
         results=[
@@ -109,7 +109,7 @@ async def answer_cq(_, cq: CallbackQuery):
     if not whisper:
         try:
             await cq.answer("Can't find the whisper text", show_alert=True)
-            await cq.edit_message_text(f"🚧invalid whisper🚧")
+            await cq.edit_message_text(f"etibarsız gizli mesaj")
         except (MessageIdInvalid, MessageNotModified):
             pass
         return
@@ -131,7 +131,7 @@ async def answer_cq(_, cq: CallbackQuery):
         if not receiver_uname:
             await read_the_whisper(cq)
             return
-        await cq.answer("This is not for you", show_alert=True)
+        await cq.answer("Nə baxırsan? Bu mesaj sənin üçün deyil !", show_alert=True)
 
 
 async def read_the_whisper(cq: CallbackQuery):
@@ -149,6 +149,6 @@ async def read_the_whisper(cq: CallbackQuery):
     try:
         t_emoji = emoji.UNLOCKED if receiver_uname else emoji.EYES
         db.whispers.delete_one({"_id": inline_message_id})
-        await cq.edit_message_text(f"{t_emoji} {user_mention} read the message")
+        await cq.edit_message_text(f"{t_emoji} {user_mention} gizli mesajı oxuyun !")
     except (MessageIdInvalid, MessageNotModified):
         pass
