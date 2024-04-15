@@ -30,20 +30,18 @@ LEARN_REPLY_MARKUP = InlineKeyboardMarkup(
 )
 
 DEFAULT_TEXT = (
-    "**This bot allows you to send whisper messages, **"
-    "**works only in inline mode\n\n**"
-    "[Source Code](https://github.com/si-nn-er-ls/whispersx_bot)"
-    " | [Developer](https://t.me/dashezup)"
-    " | [Support Chat](http://t.me/ForceSub)\n"
-    "[Bot Channel](http://t.me/decage)"
-    " | [Maintainer](http://t.me/SI_NN_ER_LS)"
-    " | [DataBase](https://www.mongodb.com)\n\n"
-    "**Send /help for more.**"
+    "**Salam 👋 Mən Qruplar üçün yaradılmış**"
+    "**bir gizli mesaj botuyam.**"
+    "**Mənim sayəmdə qruplarda**"
+    "**Dostlarınıza gizli mesaj**"
+    "**göndərə bilərsiniz.\n\n**"
+    "**Botun istifadəsi üçün**"
+    "**/help kommandını istifadə edə bilərsiniz.**"
 )
 DEFAULT_REPLY_MARKUP = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Select a Chat to Try", switch_inline_query=""),
+            InlineKeyboardButton("Məni Qrupunuza Əlavə edin", url="https://t.me/LeoMesajBot"),
             InlineKeyboardButton(
                 "Try in This Chat", switch_inline_query_current_chat=""
             ),
