@@ -149,12 +149,12 @@ async def delete_my_whispers(_, cq: CallbackQuery):
     deleted_whispers = db.whispers.count_documents({"sender_uid": user_id})
     db.whispers.delete_many({"sender_uid": user_id})
     if not deleted_whispers:
-        await cq.answer("You don't have any whispers")
+        await cq.answer("Sənin heç bir gizli mesajın yoxdur.")
     else:
         await cq.answer(f"{deleted_whispers} gizli mesaj silindi")
         utcnow = datetime.datetime.utcnow().strftime("%F %T")
         await cq.edit_message_text(
-            f"f"Sizin Gizli Mesajlarınız silindi `{utcnow}`",
+            f"Sizin Gizli Mesajlarınız silindi `{utcnow}`",
             reply_markup=cq.message.reply_markup,
         )
 
