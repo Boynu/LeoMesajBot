@@ -41,7 +41,7 @@ DEFAULT_TEXT = (
 DEFAULT_REPLY_MARKUP = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Məni Qrupunuza Əlavə edin", url="https://t.me/LeoMesajBot?startgroup=true"),
+            InlineKeyboardButton("Məni Sınamaq üçün Söhbət seçin", switch_inline_query=""),
             InlineKeyboardButton(
                 "Məndən İstifadə edin", switch_inline_query_current_chat=""
             ),
