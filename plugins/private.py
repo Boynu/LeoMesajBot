@@ -13,20 +13,20 @@ from pyrogram.types import (
 from pyrogram.errors import FloodWait
 
 LEARN_TEXT = f"""
-    **This bot works only in inline mode, a example use would be like.
-    This:
+    **Bu bot yalnız daxili rejimdə işləyir, istifadə nümunəsi
+    Budur:
   
-    - Write a whisper to @username
-    `{BOT_USERNAME} @username some text here`
+    - @username-ə gizli mesaj yazın
+    `{BOT_USERNAME} @username gizli mesaj yazın.`
   
-    - Write a whisper which anyone can read it multiple times
-    `{BOT_USERNAME} @ some text here`
+    - İstifadəçilərin dəfələrlə oxuya biləcəyi bir gizli mesaj yazın
+    `{BOT_USERNAME} @username gizli mesaj yazın.`
 
-    - Whisper to the first one who open it (can also be used in PM)
-    `{BOT_USERNAME} some text here`**"""
+    - İlk açana gizli mesaj göndərin.
+    `{BOT_USERNAME} @username gizli mesaj yazın.`**"""
 
 LEARN_REPLY_MARKUP = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("Next", callback_data="learn_next")]]
+    [[InlineKeyboardButton("Növbəti", callback_data="learn_next")]]
 )
 
 DEFAULT_TEXT = (
