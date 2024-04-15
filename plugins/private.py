@@ -1,7 +1,7 @@
 import asyncio
 import datetime
 from bot import db
-from config import BOT_USERNAME, WHISPER_ICON_URL, SUDO_USERS, chat_id
+from config import BOT_USERNAME, WHISPER_ICON_URL, SUDO_USERS, CHAT_ID
 
 from pyrogram import Client, filters, emoji, enums
 from pyrogram.types import (
@@ -91,7 +91,7 @@ async def command_start(client, m: Message):
         if not await is_user_exist(m.from_user.id):
             await add_user(m.from_user.id)
             await client.send_message(
-                chat_id=chat_id,
+                chat_id=CHAT_ID,
                 text=f"#NEW_USER: \n\nUser:- [{m.from_user.first_name}](tg://user?id={m.from_user.id})\ndate:- `{datetime.date.today().isoformat()}`",
                 parse_mode=enums.ParseMode.MARKDOWN,
             )
@@ -200,3 +200,4 @@ async def broadcast_message(client, message):
             print(e)
             pass
     await m.edit(f"**Broadcasted Message In {sent} Chats.**")
+    
