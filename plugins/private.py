@@ -30,10 +30,10 @@ LEARN_REPLY_MARKUP = InlineKeyboardMarkup(
 )
 
 DEFAULT_TEXT = (
-    "**Salam 👋 Mən Qruplar üçün yaradılmış**"
-    "**bir gizli mesaj botuyam.**"
-    "**Mənim sayəmdə qruplarda\n**"
-    "**Dostlarınıza gizli mesaj\n**"
+    "**Salam 👋 Mən Qruplar üçün yaradılmış**\n"
+    "**bir gizli mesaj botuyam.**\n"
+    "**Mənim sayəmdə qruplarda**\n"
+    "**Dostlarınıza gizli mesaj**\n"
     "**göndərə bilərsiniz.\n\n**"
     "**Botun istifadəsi üçün\n**"
     "**/help kommandını istifadə edə bilərsiniz.**"
