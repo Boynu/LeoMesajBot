@@ -26,7 +26,7 @@ LEARN_TEXT = f"""
     `{BOT_USERNAME} @username gizli mesaj yazın.`**"""
 
 LEARN_REPLY_MARKUP = InlineKeyboardMarkup(
-    [[InlineKeyboardButton("Növbəti", callback_data="learn_next")]]
+    [[InlineKeyboardButton("📚 Ana Menyu", callback_data="learn_next")]]
 )
 
 DEFAULT_TEXT = (
