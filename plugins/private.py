@@ -41,12 +41,12 @@ DEFAULT_TEXT = (
 DEFAULT_REPLY_MARKUP = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton("Məni Qrupunuza Əlavə edin", url="https://t.me/LeoMesajBot"),
+            InlineKeyboardButton("Məni Qrupunuza Əlavə edin", url="https://t.me/LeoMesajBot?startgroup=true"),
             InlineKeyboardButton(
-                "Try in This Chat", switch_inline_query_current_chat=""
+                "Məndən İstifadə edin", switch_inline_query_current_chat=""
             ),
         ],
-        [InlineKeyboardButton("My Whispers", callback_data="list_whispers")],
+        [InlineKeyboardButton("Mənim Mesajlarım", callback_data="list_whispers")],
     ]
 )
 
@@ -90,7 +90,7 @@ async def command_start(client, m: Message):
             await add_user(m.from_user.id)
             await client.send_message(
                 chat_id=CHAT_ID,
-                text=f"#NEW_USER: \n\nUser:- [{m.from_user.first_name}](tg://user?id={m.from_user.id})\ndate:- `{datetime.date.today().isoformat()}`",
+                text=f"#YENİ_İSMARİC: \n\nİstifadəçi:- [{m.from_user.first_name}](tg://user?id={m.from_user.id})\nVaxtı:- `{datetime.date.today().isoformat()}`",
                 parse_mode=enums.ParseMode.MARKDOWN,
             )
     await m.reply_photo(
@@ -108,7 +108,7 @@ async def show_main_page(_, cq: CallbackQuery):
         reply_markup=DEFAULT_REPLY_MARKUP,
     )
     await cq.answer(
-        f"{emoji.ROBOT} Now you may try it in inline mode"
+        f"{emoji.ROBOT} İndi siz onu daxili rejimdə sınaya bilərsiniz"
         if cq.data == "learn_next"
         else None
     )
@@ -119,21 +119,21 @@ async def list_whispers(_, cq: CallbackQuery):
     user_id = cq.from_user.id
     user_whispers_count = db.whispers.count_documents({"sender_uid": user_id})
     if user_whispers_count == 0:
-        text = "You don't have any whispers"
+        text = "Sənin heç bir gizli mesajın yoxdur"
     else:
-        text = f"You have {user_whispers_count} whispers"
+        text = f"{user_whispers_count} gizli mesajlarınız var"
 
     reply_markup = InlineKeyboardMarkup(
         [
             [
                 InlineKeyboardButton(
-                    f"{emoji.WASTEBASKET}  Delete My Whispers",
+                    f"{emoji.WASTEBASKET}  Gizli Mesajlarımı Sil",
                     callback_data="delete_my_whispers",
                 )
             ],
             [
                 InlineKeyboardButton(
-                    f"{emoji.BACK_ARROW}  Back to Main Page", callback_data="start"
+                    f"{emoji.BACK_ARROW}  Geri", callback_data="start"
                 )
             ],
         ]
@@ -151,10 +151,10 @@ async def delete_my_whispers(_, cq: CallbackQuery):
     if not deleted_whispers:
         await cq.answer("You don't have any whispers")
     else:
-        await cq.answer(f"Removed {deleted_whispers} whispers")
+        await cq.answer(f"{deleted_whispers} gizli mesaj silindi")
         utcnow = datetime.datetime.utcnow().strftime("%F %T")
         await cq.edit_message_text(
-            f"Your whispers has been removed at `{utcnow}`",
+            f"f"Sizin Gizli Mesajlarınız silindi `{utcnow}`",
             reply_markup=cq.message.reply_markup,
         )
 
