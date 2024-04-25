@@ -1,6 +1,6 @@
 from bot import db
 from typing import Optional
-from config import BOT_USERNAME, WHISPER_ICON_URL
+from config import BOT_USERNAME
 from pyrogram import Client, filters, emoji
 
 from pyrogram.errors.exceptions.bad_request_400 import (
